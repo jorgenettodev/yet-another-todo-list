@@ -1,7 +1,5 @@
 // Gets the list ul element
 const list = document.querySelector('#list');
-list.style.border = '1px solid green';
-list.style.backgroundColor = '#f4f4f4';
 
 // Create new todo
 const newTask = document.createElement('li');
@@ -31,14 +29,14 @@ list.removeChild(list.children[3]);
 
 // create delete button and append to all li
 let deleteButton = document.createElement('button');
-deleteButton.textContent = 'Delete Item';
+deleteButton.textContent = 'Delete';
 
 const items = list.querySelectorAll('li');
 
 // create one Delete button for each list item
 items.forEach( (item) => {
     let delBtn = document.createElement('button');
-    delBtn.textContent = 'Delete Item';
+    delBtn.textContent = 'Delete';
     delBtn.className = 'delete';
     item.appendChild(delBtn);
 })

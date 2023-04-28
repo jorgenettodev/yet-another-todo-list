@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>yet another todo list</title>
-        <meta charset="utf"-8>
+        <meta charset="utf-8">
         <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
-        <style>
-            body {
-                font-family: 'Dekko';font-size: 22px;
-            }
-            </style>
+        <link href="./assets/style.css" rel="stylesheet">
     </head>
 
     <body>
-        <ul id="list">
-            <li class="task">finish this new todo-list web application</li>
-            <li class="task">get a home office job</li>
-            <li class="task">live the good life.</li>
-        </ul>
+        <header>
+            <h1>yet another to-do list</h1>
+        </header>
 
-        <script src="./script.js"></script>
+        <div class="main">
+            <div class="inputs__container">
+                <input type="text" id="inputTask" class="input" placeholder="Insira aqui alguma tarefa depois clique em OK">
+                <button class="btnAdd">Adicionar</button>
+
+            </div>
+
+            <ul class="list" id="list">
+                <li class="task">finish this new todo-list web application</li>
+                <li class="task">get a home office job</li>
+                <li class="task">live the good life.</li>
+            </ul>
+
+        </div>
+
+        <script src="./assets/script.js"></script>
     </body>
 </html>
