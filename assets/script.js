@@ -32,6 +32,9 @@ addBtn.addEventListener('click', render);
 
 // function createTask
 function createTask() {
+
+    
+
     // create li
     let task = document.createElement('li');
     let text = document.createTextNode(input.value)
@@ -56,6 +59,10 @@ function appendTask(task) {
 }
 
 function render() {
+    if(input.value == "") {
+        return;
+    }
+
     let task = createTask();
     appendTask(task);
     input.value = '';
