@@ -1,52 +1,61 @@
 // Gets the list ul element
 const list = document.querySelector('#list');
 
-// Create new todo
-const newTask = document.createElement('li');
-newTask.textContent = 'Do something uncomfortable everyday.';
-newTask.classList.add('task');
-list.appendChild(newTask);
-
-// create another todo task
-const anotherTodo = document.createElement('li');
-anotherTodo.className = 'task';
-anotherTodo.textContent = 'Pay bills';
-
-// adds new todo to the beginning of the list.
-// parentNode.insertBefore(newNode, referenceNode);
-list.insertBefore(anotherTodo, list.firstElementChild);
-
-// create an item to replace another
-const modifiedTodo = document.createElement('li');
-modifiedTodo.className = 'task';
-modifiedTodo.textContent = 'pay college\'s fucking bills'
-
-// replace some node with another.
-list.replaceChild(modifiedTodo, list.children[2]);
-
-// delete some node
-list.removeChild(list.children[3]);
-
-// create delete button and append to all li
-let deleteButton = document.createElement('button');
-deleteButton.textContent = 'Delete';
 
 const items = list.querySelectorAll('li');
 
 // create one Delete button for each list item
 items.forEach( (item) => {
-    let delBtn = document.createElement('button');
-    delBtn.textContent = 'Delete';
-    delBtn.className = 'delete';
+    
     item.appendChild(delBtn);
 })
 
-const deleteButtons = document.querySelectorAll('.delete');
+//  ################ Feature - delete item #####################
+list.addEventListener('click', deleteItem);
 
-list.addEventListener('click', (e) =>{
-    console.log(e.target.parentNode);
+// function deleteItem 
+function deleteItem(e) {
     if (e.target.className !== 'delete') {
         return;
     }
     e.target.parentNode.remove();
-} )
+}
+
+
+// ######################### Feature - add item ########################
+// input
+const input = document.querySelector('#inputTask');
+
+const addBtn = document.querySelector('#btnAdd');
+
+addBtn.addEventListener('click', render);
+
+// function createTask
+function createTask() {
+    // create li
+    let task = document.createElement('li');
+    let text = document.createTextNode(input.value)
+    task.classList.add('task');
+
+    // create delete button
+    let delBtn = document.createElement('button');
+    delBtn.textContent = 'Delete';
+    delBtn.className = 'delete';
+
+    //append li + delete button;
+    task.appendChild(text);
+    task.appendChild(delBtn);
+
+    
+    return task;
+}
+
+function appendTask(task) {
+    list.appendChild(task);
+    
+}
+
+function render() {
+    let task = createTask();
+    appendTask(task);
+}

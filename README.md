@@ -1,2 +1,10 @@
 # yet-another-todo-list
-Digital Ocean DOM's tutorial, creating a todo-list to learn the DOM
+Todo list created using only html, css and javascript.
+
+# Style
+The colors where based on a blue pastel colors palette.
+
+# Functionalities
+- add task
+- remove task
+- save the current list on local storage.

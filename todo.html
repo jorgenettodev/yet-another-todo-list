@@ -14,19 +14,29 @@
         </header>
 
         <div class="main">
+            <div class="title">
+                <h3 class="main__title">Add item</h2>
+            </div>
             <div class="inputs__container">
-                <input type="text" id="inputTask" class="input" placeholder="Insira aqui alguma tarefa depois clique em OK">
-                <button class="btnAdd">Adicionar</button>
+
+                <input type="text" id="inputTask" class="input" placeholder="Insert one task/item and click on Add">
+                <button class="btnAdd" id="btnAdd">
+                    <img src="./assets/add.svg"></img>
+                    <span>New task</span>
+                </button>
 
             </div>
 
-            <ul class="list" id="list">
-                <li class="task">finish this new todo-list web application</li>
-                <li class="task">get a home office job</li>
-                <li class="task">live the good life.</li>
-            </ul>
+            <div class="tasks">
+                <h3>Tasks</h3>
+                <ul class="list" id="list"></ul>
+            </div>
 
         </div>
+
+        <footer>
+
+        </footer>
 
         <script src="./assets/script.js"></script>
     </body>
