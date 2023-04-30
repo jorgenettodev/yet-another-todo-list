@@ -42,7 +42,7 @@ function createTask() {
 
     // create delete button
     let delBtn = document.createElement('button');
-    delBtn.textContent = 'Delete';
+    delBtn.textContent = 'delete';
     delBtn.className = 'delete';
 
     //append li + delete button;

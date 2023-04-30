@@ -47,6 +47,7 @@ header {
     align-items: center;
     border-radius: 1.25rem;
     padding: 1rem;
+    gap: 1rem;
 
 }
 
@@ -145,6 +146,11 @@ header {
     .list {
         width: 80vw;
         min-height: 40vh;
+    }
+
+    .inputs__container {
+        width: 90vw;
+        gap: 10px;
     }
 
     header > h1 {
