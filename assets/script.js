@@ -58,4 +58,6 @@ function appendTask(task) {
 function render() {
     let task = createTask();
     appendTask(task);
+    input.value = '';
+    input.focus();
 }
