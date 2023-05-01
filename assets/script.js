@@ -1,5 +1,21 @@
 // Create an array on objects to storage the li items of the task list
-const arrayOfTasks = [];
+let arrayOfTasks = [];
+
+// Create a function that you retrieve the data from the localStorage and put it on the object 'arrayOfTasks'
+
+// Create a const to retrieve the data from localStorage
+const savedList = localStorage.getItem('todo-list');
+
+if (savedList) {
+    arrayOfTasks = JSON.parse(savedList);
+}
+
+
+
+
+
+
+
 
 
 // Gets the list ul element
@@ -23,6 +39,7 @@ function deleteItem(e) {
         return;
     }
     e.target.parentNode.remove();
+
 
 }
 
@@ -58,7 +75,7 @@ function createTask() {
 
     // Push the text of the task to the arrayOfTasks object.
     arrayOfTasks.push(`{${task.innerText}}`);
-    saveItem(arrayOfTasks);
+    localStorage.setItem('todo-list',JSON.stringify(arrayOfTasks));
 
 
     task.appendChild(delBtn);
@@ -67,9 +84,7 @@ function createTask() {
     return task;
 }
 
-function saveItem(task) {
-    localStorage.setItem('todo-list',JSON.stringify(task));
-}
+
 
 
 
