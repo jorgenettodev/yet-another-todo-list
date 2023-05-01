@@ -10,8 +10,7 @@ if (savedList) {
     arrayOfTasks = JSON.parse(savedList);
 }
 
-
-
+// create a function that render the saved items on the list
 
 
 
@@ -21,14 +20,22 @@ if (savedList) {
 // Gets the list ul element
 const list = document.querySelector('#list');
 
+arrayOfTasks.forEach( (task)=> {
+    let listItem = document.createElement('li');
+    listItem.innerText = task.toString();
+    console.log(listItem);
+    listItem.classList.add('task');
 
-const items = list.querySelectorAll('li');
-
-// create one Delete button for each list item
-items.forEach( (item) => {
     
-    item.appendChild(delBtn);
+    let delBtn = document.createElement('button');
+    delBtn.textContent = 'Delete';
+    delBtn.className = 'delete';
+    listItem.appendChild(delBtn);
+    list.appendChild(listItem);
 })
+
+
+
 
 //  ################ Feature - delete item #####################
 list.addEventListener('click', deleteItem);
