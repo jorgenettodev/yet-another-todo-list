@@ -1,3 +1,7 @@
+// Create an array on objects to storage the li items of the task list
+const arrayOfTasks = [];
+
+
 // Gets the list ul element
 const list = document.querySelector('#list');
 
@@ -19,6 +23,7 @@ function deleteItem(e) {
         return;
     }
     e.target.parentNode.remove();
+
 }
 
 
@@ -29,6 +34,9 @@ const input = document.querySelector('#inputTask');
 const addBtn = document.querySelector('#btnAdd');
 
 addBtn.addEventListener('click', render);
+
+
+
 
 // function createTask
 function createTask() {
@@ -47,11 +55,23 @@ function createTask() {
 
     //append li + delete button;
     task.appendChild(text);
+
+    // Push the text of the task to the arrayOfTasks object.
+    arrayOfTasks.push(`{${task.innerText}}`);
+    saveItem(arrayOfTasks);
+
+
     task.appendChild(delBtn);
 
-    
+    console.log(arrayOfTasks);
     return task;
 }
+
+function saveItem(task) {
+    localStorage.setItem('todo-list',JSON.stringify(task));
+}
+
+
 
 function appendTask(task) {
     list.appendChild(task);
@@ -68,3 +88,7 @@ function render() {
     input.value = '';
     input.focus();
 }
+
+
+// localStorage
+
