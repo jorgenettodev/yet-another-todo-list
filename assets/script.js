@@ -22,8 +22,7 @@ const list = document.querySelector('#list');
 
 arrayOfTasks.forEach( (task)=> {
     let listItem = document.createElement('li');
-    listItem.innerText = task.toString();
-    console.log(listItem);
+    listItem.innerText = task;
     listItem.classList.add('task');
 
     
@@ -45,10 +44,29 @@ function deleteItem(e) {
     if (e.target.className !== 'delete') {
         return;
     }
-    e.target.parentNode.remove();
+    e.stopPropagation();
+    
+    // ################ remove the deleted item from the localStorage
+
+    // get the textContent of the father element of the clicked delete button.
+    const deletedText = e.target.parentElement.firstChild.textContent;
+
+    //get the index of the deletedText on the savedList on localStorage
+    const deletedIndex = arrayOfTasks.findIndex((task) => task === deletedText);
+    
+    // remove the item from the savedList on localStorage
+    if (deletedIndex !== -1) {
+        arrayOfTasks.splice(deletedIndex, 1);
+    }
+
+    // update the savedList
+    localStorage.setItem('todo-list', JSON.stringify(arrayOfTasks));
 
 
+    // remove the item from the dom
+    e.target.parentNode.remove(); 
 }
+
 
 
 // ######################### Feature - add item ########################
@@ -81,13 +99,12 @@ function createTask() {
     task.appendChild(text);
 
     // Push the text of the task to the arrayOfTasks object.
-    arrayOfTasks.push(`{${task.innerText}}`);
+    arrayOfTasks.push(`${task.innerText}`);
     localStorage.setItem('todo-list',JSON.stringify(arrayOfTasks));
 
 
     task.appendChild(delBtn);
 
-    console.log(arrayOfTasks);
     return task;
 }
 
@@ -110,7 +127,4 @@ function render() {
     input.value = '';
     input.focus();
 }
-
-
-// localStorage
 
